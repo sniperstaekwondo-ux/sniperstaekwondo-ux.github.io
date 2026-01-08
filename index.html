@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snipers Taekwondo Club</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Tajawal',sans-serif;
+  direction:rtl;
+  background:#000;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* Progress Bar */
+#progress{
+  position:fixed;
+  top:0;left:0;
+  height:4px;
+  background:#ffd700;
+  width:0%;
+  z-index:9999;
+}
+
+/* Loading */
+#loading{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9998;
+}
+.loading-text{
+  font-size:22px;
+  color:#ffd700;
+  font-weight:900;
+  animation:spinZoom 2.5s ease-in-out forwards;
+}
+@keyframes spinZoom{
+  0%{transform:scale(.7) rotate(0);opacity:0;}
+  50%{transform:scale(1) rotate(180deg);opacity:1;}
+  100%{transform:scale(1.3) rotate(360deg);opacity:0;}
+}
+
+#site{display:none}
+
+/* Top Bar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  border-bottom:3px solid #ffd700;
+}
+.topbar button{
+  background:#ffd700;
+  border:none;
+  padding:6px 14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Hero */
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+.hero h1{
+  color:#ffd700;
+  font-size:40px;
+}
+.hero p{
+  font-size:20px;
+}
+.hero a{
+  background:#ffd700;
+  color:#000;
+  padding:12px 26px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* Sections */
+section{
+  margin:25px;
+  padding:30px;
+  background:#111;
+  border-radius:16px;
+}
+h2{color:#ffd700}
+.fade-up{opacity:0;transform:translateY(30px);transition:.8s}
+.fade-up.show{opacity:1;transform:translateY(0)}
+
+/* Features */
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+.feature{
+  background:#000;
+  padding:18px;
+  border-left:5px solid #ffd700;
+  font-weight:bold;
+  text-align:center;
+}
+
+/* Form */
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:10px;
+  border:none;
+  background:#222;
+  color:#fff;
+}
+
+/* Action Buttons */
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+.action-buttons{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+  z-index:999;
+}
+.action-buttons a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:26px;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  animation:pulse 2.5s infinite;
+}
+.register{background:#ffd700;color:#000}
+.whats{background:#25d366;color:#fff}
+
+/* Social */
+.social a{
+  color:#ffd700;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:40px 15px;
+  border-top:1px solid #333;
+  color:#ffd700;
+  font-size:18px;
+  font-weight:900;
+}
+footer span{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<div id="loading">
+  <div class="loading-text">Snipers Taekwondo Club</div>
+</div>
+
+<div id="site">
+
+<div class="topbar">
+  <div id="club">نادي القناصون للتايكواندو</div>
+  <button onclick="toggleLang()" id="langBtn">EN</button>
+</div>
+
+<div class="hero">
+  <h1 id="heroTitle">قوة • انضباط • ثقة</h1>
+  <p id="heroText">بيئة تدريب تصنع الأبطال</p>
+  <a href="#register" id="heroBtn">سجّل الآن</a>
+</div>
+
+<section class="fade-up">
+  <h2 id="whyTitle">لماذا القناصون؟</h2>
+  <div class="features">
+    <div class="feature" id="f1">تدريب تايكواندو احترافي</div>
+    <div class="feature" id="f2">لياقة بدنية عالية</div>
+    <div class="feature" id="f3">دفاع عن النفس</div>
+    <div class="feature" id="f4">بطولات محلية ودولية</div>
+  </div>
+</section>
+
+<section class="fade-up">
+  <h2 id="timeTitle">أوقات التدريب</h2>
+  <p id="timeText">
+    طوال الأسبوع من 1 ظهرًا إلى 9 مساءً<br>
+    الجمعة عطلة<br>
+    من عمر 3.5 سنوات فما فوق
+  </p>
+</section>
+
+<section class="fade-up" id="register">
+  <h2 id="regTitle">التسجيل</h2>
+  <input id="name" placeholder="الاسم الكامل">
+  <input id="phone" placeholder="رقم الهاتف">
+  <input id="email" type="email" placeholder="الإيميل">
+  <textarea id="note" placeholder="ملاحظات"></textarea>
+</section>
+
+<section class="fade-up">
+  <h2 id="contactTitle">تواصل معنا</h2>
+  <p id="contactText">
+    عمّان . حي عدن . دوار الجبالي . مجمع رباح التجاري . الطابق الثالث<br>
+    0798121015<br><br>
+    <a href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank" style="color:#ffd700">
+      عرض الموقع على Google Maps
+    </a>
+  </p>
+  <div class="social">
+    <a href="https://www.facebook.com/share/18536AXeie/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/academy_snipers_taekwondo" target="_blank">Instagram</a>
+  </div>
+</section>
+
+<footer id="footer">
+  بإدارة الكابتن أحمد الأسمر
+  <span>Snipers Taekwondo Club</span>
+</footer>
+
+<div class="action-buttons">
+  <a href="#register" class="register" id="btnReg">سجّل الآن</a>
+  <a href="https://wa.me/962798121015" class="whats">WhatsApp</a>
+</div>
+
+</div>
+
+<script>
+/* Loading */
+window.onload=()=>{
+  setTimeout(()=>{
+    loading.style.display="none";
+    site.style.display="block";
+    document.body.style.overflow="auto";
+    document.querySelectorAll(".fade-up").forEach(el=>el.classList.add("show"));
+  },1800);
+};
+
+/* Progress */
+window.onscroll=()=>{
+  let h=document.documentElement;
+  progress.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
+};
+
+/* Language Toggle */
+let ar=true;
+function toggleLang(){
+  ar=!ar;
+  document.body.dir=ar?"rtl":"ltr";
+  langBtn.innerText=ar?"EN":"AR";
+
+  club.innerText = ar ? "نادي القناصون للتايكواندو" : "Snipers Taekwondo Club";
+  heroTitle.innerText = ar ? "قوة • انضباط • ثقة" : "Power • Discipline • Confidence";
+  heroText.innerText = ar ? "بيئة تدريب تصنع الأبطال" : "Training environment that builds champions";
+  heroBtn.innerText = ar ? "سجّل الآن" : "Register Now";
+  btnReg.innerText = ar ? "سجّل الآن" : "Register Now";
+
+  whyTitle.innerText = ar ? "لماذا القناصون؟" : "Why Snipers?";
+  f1.innerText = ar ? "تدريب تايكواندو احترافي" : "Professional Taekwondo Training";
+  f2.innerText = ar ? "لياقة بدنية عالية" : "High Physical Fitness";
+  f3.innerText = ar ? "دفاع عن النفس" : "Self Defense";
+  f4.innerText = ar ? "بطولات محلية ودولية" : "Local & International Championships";
+
+  timeTitle.innerText = ar ? "أوقات التدريب" : "Training Schedule";
+  timeText.innerHTML = ar ?
+    "طوال الأسبوع من 1 ظهرًا إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق"
+    :
+    "All week from 1 PM to 9 PM<br>Friday off<br>Ages 3.5 and above";
+
+  regTitle.innerText = ar ? "التسجيل" : "Registration";
+  contactTitle.innerText = ar ? "تواصل معنا" : "Contact Us";
+  footer.firstChild.textContent = ar ? "بإدارة الكابتن أحمد الأسمر" : "Managed by Captain Ahmad Al-Asmar";
+}
+</script>
+
+</body>
+</html>
