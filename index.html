@@ -114,16 +114,31 @@ h2{color:#ffd700}
 }
 
 /* Form */
-input,textarea{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border-radius:10px;
-  border:none;
-  background:#222;
-  color:#fff;
+input, select, textarea {
+  width: 100%;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 2px solid #ffd700;
+  background: #000;
+  color: #fff;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+  font-weight: 500;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #fff;
+}
 /* Action Buttons */
 @keyframes pulse{
   0%{transform:scale(1)}
@@ -316,9 +331,29 @@ function toggleLang(){
     <input type="email" name="email" placeholder="البريد الإلكتروني" required>
     <input type="tel" name="phone" placeholder="رقم الهاتف" required>
 
-    <label style="color:#fff;">الوقت المناسب للزيارة:</label>
-    <input type="time" name="visit_time" required>
-
+<label style="color:#fff;">يوم التدريب:</label>
+<select name="training_day" required>
+  <option value="">اختر اليوم</option>
+  <option value="Saturday">السبت</option>
+  <option value="Sunday">الأحد</option>
+  <option value="Monday">الإثنين</option>
+  <option value="Tuesday">الثلاثاء</option>
+  <option value="Wednesday">الأربعاء</option>
+  <option value="Thursday">الخميس</option>
+</select>
+    <label style="color:#fff;">وقت التدريب:</label>
+<select name="training_time" required>
+  <option value="">اختر الوقت</option>
+  <option value="1 PM">1:00 مساءً</option>
+  <option value="2 PM">2:00 مساءً</option>
+  <option value="3 PM">3:00 مساءً</option>
+  <option value="4 PM">4:00 مساءً</option>
+  <option value="5 PM">5:00 مساءً</option>
+  <option value="6 PM">6:00 مساءً</option>
+  <option value="7 PM">7:00 مساءً</option>
+  <option value="8 PM">8:00 مساءً</option>
+  <option value="9 PM">9:00 مساءً</option>
+</select>
     <label style="color:#fff;">التقييم:</label>
     <select name="rating" required>
       <option value="">اختر التقييم</option>
