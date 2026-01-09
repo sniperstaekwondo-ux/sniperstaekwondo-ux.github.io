@@ -198,106 +198,11 @@ footer span{
 
 <div id="progress"></div>
 
-<div id="loading">
-  <div class="loading-text">Snipers Taekwondo Club</div>
-</div>
 
-<div id="site">
-
-<div class="topbar">
-  <div id="club">نادي القناصون للتايكواندو</div>
-  <button onclick="toggleLang()" id="langBtn">EN</button>
-</div>
-
-<div class="hero">
-  <h1 id="heroTitle">قوة • انضباط • ثقة</h1>
-  <p id="heroText">بيئة تدريب تصنع الأبطال</p>
-  <a href="#register" id="heroBtn">سجّل الآن</a>
-</div>
-
-<section class="fade-up">
-  <h2 id="whyTitle">لماذا القناصون؟</h2>
-  <div class="features">
-    <div class="feature" id="f1">تدريب تايكواندو احترافي</div>
-    <div class="feature" id="f2">لياقة بدنية عالية</div>
-    <div class="feature" id="f3">دفاع عن النفس</div>
-    <div class="feature" id="f4">بطولات محلية ودولية</div>
-  </div>
-</section>
-
-<section class="fade-up">
-  <h2 id="timeTitle">أوقات التدريب</h2>
-  <p id="timeText">
-    طوال الأسبوع من 1 ظهرًا إلى 9 مساءً<br>
-    الجمعة عطلة<br>
-    من عمر 3.5 سنوات فما فوق
-  </p>
-</section>
-
-<section class="fade-up" id="register">
-  <h2 id="regTitle">التسجيل</h2>
-  <input id="name" placeholder="الاسم الكامل">
-  <input id="phone" placeholder="رقم الهاتف">
-  <input id="email" type="email" placeholder="الإيميل">
-  <textarea id="note" placeholder="ملاحظات"></textarea>
-</section>
-
-<section class="fade-up">
   <h2 id="contactTitle">تواصل معنا</h2>
   <p id="contactText">
     عمّان . حي عدن . دوار الجبالي . مجمع رباح التجاري . الطابق الثالث<br>
     0798121015<br><br>
-    <a href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank" style="color:#ffd700">
-      عرض الموقع على Google Maps
-    </a>
-  </p>
-  <div class="social">
-    <a href="https://www.facebook.com/share/18536AXeie/" target="_blank">Facebook</a>
-    <a href="https://www.instagram.com/academy_snipers_taekwondo" target="_blank">Instagram</a>
-  </div>
-</section>
-
-<footer id="footer">
-  بإدارة الكابتن أحمد الأسمر
-  <span>Snipers Taekwondo Club</span>
-</footer>
-
-<div class="action-buttons">
-  <a href="#register" class="register" id="btnReg">سجّل الآن</a>
-  <a href="https://wa.me/962798121015" class="whats">WhatsApp</a>
-</div>
-
-</div>
-
-<script>
-/* Loading */
-window.onload=()=>{
-  setTimeout(()=>{
-    loading.style.display="none";
-    site.style.display="block";
-    document.body.style.overflow="auto";
-    document.querySelectorAll(".fade-up").forEach(el=>el.classList.add("show"));
-  },1800);
-};
-
-/* Progress */
-window.onscroll=()=>{
-  let h=document.documentElement;
-  progress.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
-};
-
-/* Language Toggle */
-let ar=true;
-function toggleLang(){
-  ar=!ar;
-  document.body.dir=ar?"rtl":"ltr";
-  langBtn.innerText=ar?"EN":"AR";
-
-  club.innerText = ar ? "نادي القناصون للتايكواندو" : "Snipers Taekwondo Club";
-  heroTitle.innerText = ar ? "قوة • انضباط • ثقة" : "Power • Discipline • Confidence";
-  heroText.innerText = ar ? "بيئة تدريب تصنع الأبطال" : "Training environment that builds champions";
-  heroBtn.innerText = ar ? "سجّل الآن" : "Register Now";
-  btnReg.innerText = ar ? "سجّل الآن" : "Register Now";
 
   whyTitle.innerText = ar ? "لماذا القناصون؟" : "Why Snipers?";
   f1.innerText = ar ? "تدريب تايكواندو احترافي" : "Professional Taekwondo Training";
@@ -412,5 +317,64 @@ form.addEventListener("submit", function (e) {
 });
 </script>
 </script>
+  </div>
+
+<div id="site">
+
+<div class="topbar">
+  <div id="club">نادي القناصون للتايكواندو</div>
+  <button onclick="toggleLang()" id="langBtn">EN</button>
+</div>
+
+<div class="hero">
+  <h1 id="heroTitle">قوة • انضباط • ثقة</h1>
+  <p id="heroText">بيئة تدريب تصنع الأبطال</p>
+  <a href="#register" id="heroBtn">سجّل الآن</a>
+</div>
+
+<section class="fade-up">
+  <h2 id="whyTitle">لماذا القناصون؟</h2>
+  <div class="features">
+    <div class="feature" id="f1">تدريب تايكواندو احترافي</div>
+    <div class="feature" id="f2">لياقة بدنية عالية</div>
+    <div class="feature" id="f3">دفاع عن النفس</div>
+    <div class="feature" id="f4">بطولات محلية ودولية</div>
+  </div>
+</section>
+
+<section class="fade-up">
+  <h2 id="timeTitle">أوقات التدريب</h2>
+  <p id="timeText">
+    طوال الأسبوع من 1 ظهرًا إلى 9 مساءً<br>
+    الجمعة عطلة<br>
+    من عمر 3.5 سنوات فما فوق
+  </p>
+</section>
+
+
+
+<section class="fade-up">
+  <section class="fade-up" id="contact" style="text-align:center; margin-top:40px;">
+  <h2>تواصل معنا</h2>
+  <p>
+    عمّان، حي عدن، دوار الجبالي، مجمع رياح التجاري، الطابق الثالث<br>
+    📞 0798121015
+  </p>
+
+  <p style="margin-top:15px;">
+    <a href="https://maps.google.com" target="_blank" style="color:#ffd700;">
+      عرض الموقع على Google Maps
+    </a>
+  </p>
+
+  <p style="margin-top:10px;">
+    <a href="#" style="color:#ffd700;">Facebook</a> |
+    <a href="#" style="color:#ffd700;">Instagram</a>
+  </p>
+
+  <p style="margin-top:25px; font-weight:bold;">
+    بإدارة الكابتن أحمد الأسمر
+  </p>
+  </section>
 </body>
 </html> 
