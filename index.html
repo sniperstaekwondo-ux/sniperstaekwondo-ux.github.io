@@ -320,11 +320,8 @@ function toggleLang(){
     التسجيل / Registration
   </h2>
 
-  <form
-    action="https://formspree.io/f/mqearygk"
-    method="POST"
-    style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;"
-  >
+<form id="registerForm"
+  style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:12px;">
 
     <input type="text" name="name" placeholder="الاسم الكامل" required>
     <input type="email" name="email" placeholder="البريد الإلكتروني" required>
@@ -388,10 +385,11 @@ function toggleLang(){
   </form>
 </section>
 <script>
-const form = document.querySelector("form");
+
+const form = document.getElementById("registerForm");
 const successMessage = document.getElementById("successMessage");
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   fetch(form.action, {
@@ -403,6 +401,7 @@ form.addEventListener("submit", function(e) {
   }).then(response => {
     if (response.ok) {
       form.reset();
+      form.style.display = "none";
       successMessage.style.display = "block";
     } else {
       alert("صار خطأ، حاول مرة ثانية");
@@ -411,6 +410,7 @@ form.addEventListener("submit", function(e) {
     alert("صار خطأ، حاول مرة ثانية");
   });
 });
+</script>
 </script>
 </body>
 </html> 
