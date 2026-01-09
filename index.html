@@ -316,8 +316,7 @@ function toggleLang(){
   footer.firstChild.textContent = ar ? "بإدارة الكابتن أحمد الأسمر" : "Managed by Captain Ahmad Al-Asmar";
 }
 </script>
-<section id="registration" style="padding:40px 20px;background:#111;">
-  <h2 style="color:#ffd700;text-align:center;margin-bottom:20px;">
+
     التسجيل / Registration
   </h2>
 
@@ -364,6 +363,18 @@ function toggleLang(){
       <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
     </select>
 
+    <div id="successMessage" style="
+  display:none;
+  margin-top:20px;
+  padding:15px;
+  background:#0a3;
+  color:#fff;
+  text-align:center;
+  border-radius:10px;
+  font-weight:bold;
+">
+  ✅ تم إرسال طلبك بنجاح، سنتواصل معك قريبًا
+    </div>
     <textarea name="message" placeholder="ملاحظات الزائر" rows="4"></textarea>
 
 
@@ -376,7 +387,30 @@ function toggleLang(){
     </button>
   </form>
 </section>
+<script>
+const form = document.querySelector("form");
+const successMessage = document.getElementById("successMessage");
 
-   
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      successMessage.style.display = "block";
+    } else {
+      alert("صار خطأ، حاول مرة ثانية");
+    }
+  }).catch(() => {
+    alert("صار خطأ، حاول مرة ثانية");
+  });
+});
+</script>
 </body>
 </html> 
