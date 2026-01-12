@@ -4,142 +4,165 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Snipers Taekwondo Club</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{--gold:#ffd700;}
+:root{--gold:#ffd700}
 *{box-sizing:border-box}
-body{margin:0;font-family:'Tajawal',sans-serif;background:#000;color:#fff}
-a{text-decoration:none}
-header{
-  position:sticky;top:0;z-index:50;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 18px;border-bottom:3px solid var(--gold);background:#000
-}
-header h1{color:var(--gold);font-size:18px;margin:0}
-header button{background:var(--gold);border:none;padding:6px 12px;font-weight:700;border-radius:8px}
+body{margin:0;font-family:Tajawal;background:#000;color:#fff}
 
-.hero{
-  min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding:120px 20px 80px;
-  background:radial-gradient(ellipse at center, #111 0%, #000 70%);
-}
-.hero h2{color:var(--gold);font-size:42px;margin:0 0 10px}
-.hero p{font-size:18px;opacity:.9}
-.hero a{
-  margin-top:24px;background:var(--gold);color:#000;
-  padding:14px 34px;border-radius:999px;font-weight:900;
-  animation:pulse 2.5s infinite
-}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+/* Loading */
+#loading{
+position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}
+#loading span{color:var(--gold);font-size:28px;font-weight:900;animation:spin 2.5s forwards}
+@keyframes spin{0%{transform:scale(.6) rotate(0);opacity:0}50%{transform:scale(1) rotate(180deg);opacity:1}100%{transform:scale(1.4) rotate(360deg);opacity:0}}
 
-section{
-  margin:40px 20px;padding:60px 30px;background:#111;border-radius:18px;
-  animation:fadeUp .7s ease both
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-h3{color:var(--gold);text-align:center;margin-top:0}
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:3px solid var(--gold)}
+header h1{color:var(--gold);font-size:18px}
+header button{background:var(--gold);border:none;padding:6px 12px;font-weight:900;border-radius:6px}
 
-.features{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.feature{
-  background:#000;padding:18px;border-left:5px solid var(--gold);
-  text-align:center;font-weight:700;border-radius:10px
-}
+/* Hero */
+.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero h2{color:var(--gold);font-size:42px}
+.hero a{margin-top:20px;background:var(--gold);color:#000;padding:12px 28px;border-radius:999px;font-weight:900}
 
-form{max-width:520px;margin:auto}
-input,select,textarea{
-  width:100%;padding:12px;margin:10px 0;border-radius:10px;
-  border:2px solid var(--gold);background:#000;color:#fff;font-family:Tajawal;font-size:16px
-}
-button.submit{
-  width:100%;background:var(--gold);color:#000;border:none;border-radius:12px;
-  padding:12px;font-weight:900;margin-top:10px
-}
-#success{
-  display:none;background:#0a3;padding:14px;border-radius:10px;margin-top:14px;text-align:center;font-weight:900
-}
+/* Section */
+section{margin:30px;padding:40px;background:#111;border-radius:18px}
+h3{color:var(--gold);text-align:center}
 
+/* Features */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.feature{background:#000;padding:18px;border-left:5px solid var(--gold);text-align:center;font-weight:bold}
+
+/* Form */
+input,select,textarea{width:100%;background:#000;border:2px solid var(--gold);color:#fff;padding:12px;margin:10px 0;border-radius:8px}
+button.submit{width:100%;background:var(--gold);color:#000;border:none;padding:12px;font-weight:bold;border-radius:10px}
+
+/* Success */
+#success{display:none;background:#0a3;padding:15px;border-radius:10px;text-align:center;margin-top:15px}
+
+/* Contact */
 .contact{text-align:center}
-.contact a{color:var(--gold);font-weight:700}
+.social i{font-size:28px;color:var(--gold);margin:0 10px}
 
-.whatsapp-float{
-  position:fixed;bottom:18px;left:18px;z-index:99;
-  background:#25d366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:900
-}
+/* WhatsApp */
+.whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:#fff;padding:14px 18px;border-radius:999px;font-weight:900;text-decoration:none}
 
-@media (max-width:600px){
-  .features{grid-template-columns:1fr}
-  .hero h2{font-size:32px}
+/* Mobile */
+@media(max-width:600px){
+.hero h2{font-size:32px}
+.features{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
+<div id="loading"><span>SNIPERS</span></div>
+
 <header>
-  <h1 id="club">نادي القناصون للتايكواندو</h1>
-  <button id="langBtn">EN</button>
+<h1 id="club">نادي القناصون للتايكواندو</h1>
+<button id="langBtn">EN</button>
 </header>
 
 <div class="hero">
-  <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
-  <p id="heroText">بيئة تدريب تصنع الأبطال</p>
-  <a href="#register" id="heroBtn">سجّل الآن</a>
+<h2 id="heroTitle">قوة • انضباط • ثقة</h2>
+<p id="heroText">بيئة تدريب تصنع الأبطال</p>
+<a href="#register" id="heroBtn">سجل الآن</a>
 </div>
 
 <section>
-  <h3 id="whyTitle">لماذا القناصون؟</h3>
-  <div class="features">
-    <div class="feature" id="f1">تدريب تايكواندو احترافي</div>
-    <div class="feature" id="f2">لياقة بدنية عالية</div>
-    <div class="feature" id="f3">دفاع عن النفس</div>
-    <div class="feature" id="f4">بطولات محلية ودولية</div>
-  </div>
+<h3 id="whyTitle">لماذا القناصون؟</h3>
+<div class="features">
+<div class="feature" id="f1">تدريب تايكواندو احترافي</div>
+<div class="feature" id="f2">لياقة بدنية عالية</div>
+<div class="feature" id="f3">دفاع عن النفس</div>
+<div class="feature" id="f4">بطولات محلية ودولية</div>
+</div>
 </section>
 
 <section>
-  <h3 id="timeTitle">أوقات التدريب</h3>
-  <p id="timeText" style="text-align:center">
-    طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق
-  </p>
+<h3 id="timeTitle">أوقات التدريب</h3>
+<p id="timeText" style="text-align:center">
+طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق
+</p>
 </section>
 
 <section id="register">
-  <h3 id="regTitle">التسجيل</h3>
-  <form id="regForm" action="https://formspree.io/f/mqearygk" method="POST">
-    <input name="name" placeholder="الاسم الكامل" required>
-    <input name="email" type="email" placeholder="البريد الإلكتروني" required>
-    <input name="phone" placeholder="رقم الهاتف" required>
+<h3 id="regTitle">التسجيل</h3>
 
-    <select name="day" required>
-      <option value="">اختر اليوم</option>
-      <option>السبت</option><option>الأحد</option><option>الإثنين</option>
-      <option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option>
-    </select>
+<form id="form" action="https://formspree.io/f/mqearygk" method="POST">
+<input name="name" placeholder="الاسم الكامل" required>
+<input name="email" type="email" placeholder="البريد الإلكتروني" required>
+<input name="phone" placeholder="رقم الهاتف" required>
 
-    <select name="time" required>
-      <option value="">اختر الوقت</option>
-      <option>1:00 مساءً</option><option>2:00 مساءً</option><option>3:00 مساءً</option>
-      <option>4:00 مساءً</option><option>5:00 مساءً</option><option>6:00 مساءً</option>
-      <option>7:00 مساءً</option><option>8:00 مساءً</option><option>9:00 مساءً</option>
-    </select>
+<select name="day" required>
+<option value="">اختر اليوم</option>
+<option>السبت</option><option>الأحد</option><option>الإثنين</option>
+<option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option>
+</select>
 
-    <select name="rating" required>
-      <option value="">التقييم</option>
-      <option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
-    </select>
+<select name="time" required>
+<option value="">اختر الوقت</option>
+<option>1:00 مساءً</option><option>2:00 مساءً</option><option>3:00 مساءً</option>
+<option>4:00 مساءً</option><option>5:00 مساءً</option><option>6:00 مساءً</option>
+<option>7:00 مساءً</option><option>8:00 مساءً</option><option>9:00 مساءً</option>
+</select>
 
-    <textarea name="message" placeholder="ملاحظات الزائر"></textarea>
-    <button class="submit">إرسال</button>
-    <div id="success">✅ تم إرسال طلبك بنجاح، سنتواصل معك قريبًا</div>
-  </form>
+<select name="rating" required>
+<option value="">التقييم</option>
+<option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
+</select>
+
+<textarea name="message" placeholder="ملاحظات"></textarea>
+
+<button class="submit">إرسال</button>
+<div id="success">تم إرسال طلبك بنجاح، سنتواصل معك قريبًا</div>
+</form>
 </section>
 
 <section class="contact">
-  <h3 id="contactTitle">تواصل معنا</h3>
-  <p id="contactText">
-    عمّان، حي عدن، دوار الجبالي، مجمع رباح التجاري، الطابق الثالث<br>📞 0798121015
+<h3 id="contactTitle">تواصل معنا</h3>
+<p>عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث<br>0798121015</p>
+<p><a href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank">عرض الموقع على Google Maps</a></p>
+<div class="social">
+<a href="https://www.facebook.com/share/18536AXeie/" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/academy_snipers_taekwondo" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+<p id="footer">بإدارة الكابتن أحمد الأسمر</p>
+</section>
 
+<a class="whatsapp" href="https://wa.me/962798121015" target="_blank">WhatsApp</a>
+
+<script>
+setTimeout(()=>{document.getElementById("loading").style.display="none"},2500)
+
+document.getElementById("form").addEventListener("submit",function(e){
+e.preventDefault();
+fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}})
+.then(r=>{if(r.ok){this.reset();success.style.display="block"}})
+});
+
+let ar=true;
+langBtn.onclick=()=>{
+ar=!ar;document.documentElement.dir=ar?"rtl":"ltr";langBtn.innerText=ar?"EN":"AR";
+heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
+heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
+heroBtn.innerText=ar?"سجل الآن":"Register Now";
+whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
+f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
+f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
+f3.innerText=ar?"دفاع عن النفس":"Self Defense";
+f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
+timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
+timeText.innerHTML=ar?"طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق":"All week 1PM – 9PM<br>Friday off<br>Ages 3.5+";
+regTitle.innerText=ar?"التسجيل":"Registration";
+contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
+footer.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
+}
 </script>
 
 </body>
