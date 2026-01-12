@@ -139,64 +139,7 @@ button.submit{
   <h3 id="contactTitle">تواصل معنا</h3>
   <p id="contactText">
     عمّان، حي عدن، دوار الجبالي، مجمع رباح التجاري، الطابق الثالث<br>📞 0798121015
-  </p>
-  <p>
-    <a href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank">عرض الموقع على Google Maps</a>
-  </p>
-  <p id="footerText">بإدارة الكابتن أحمد الأسمر</p>
-</section>
 
-<a class="whatsapp-float" id="waFloat" target="_blank">WhatsApp</a>
-
-<script>
-const PHONE = "962798121015";
-const form = document.getElementById("regForm");
-const success = document.getElementById("success");
-const waFloat = document.getElementById("waFloat");
-
-function buildWaText(fd){
-  return `مرحبا، حاب أسجل:\nالاسم: ${fd.get('name')}\nالإيميل: ${fd.get('email')}\nالهاتف: ${fd.get('phone')}\nاليوم: ${fd.get('day')}\nالوقت: ${fd.get('time')}\nالتقييم: ${fd.get('rating')}\nملاحظات: ${fd.get('message')||''}`;
-}
-waFloat.href = `https://wa.me/${PHONE}`;
-
-form.addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  const fd = new FormData(form);
-
-  // 1) أرسل إلى Formspree
-  fetch(form.action,{method:"POST",body:fd,headers:{'Accept':'application/json'}});
-
-  // 2) افتح واتساب بنفس البيانات
-  const txt = encodeURIComponent(buildWaText(fd));
-  window.open(`https://wa.me/${PHONE}?text=${txt}`,'_blank');
-
-  form.reset();
-  success.style.display="block";
-});
-
-// لغتين
-let ar=true;
-const langBtn=document.getElementById("langBtn");
-langBtn.onclick=()=>{
-  ar=!ar; document.body.dir=ar?"rtl":"ltr";
-  langBtn.textContent=ar?"EN":"AR";
-  club.textContent=ar?"نادي القناصون للتايكواندو":"Snipers Taekwondo Club";
-  heroTitle.textContent=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
-  heroText.textContent=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
-  heroBtn.textContent=ar?"سجّل الآن":"Register Now";
-  whyTitle.textContent=ar?"لماذا القناصون؟":"Why Snipers?";
-  f1.textContent=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
-  f2.textContent=ar?"لياقة بدنية عالية":"High Physical Fitness";
-  f3.textContent=ar?"دفاع عن النفس":"Self Defense";
-  f4.textContent=ar?"بطولات محلية ودولية":"Local & International Championships";
-  timeTitle.textContent=ar?"أوقات التدريب":"Training Schedule";
-  timeText.innerHTML=ar?
-   "طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق":
-   "All week 1 PM – 9 PM<br>Friday off<br>Ages 3.5+";
-  regTitle.textContent=ar?"التسجيل":"Registration";
-  contactTitle.textContent=ar?"تواصل معنا":"Contact Us";
-  footerText.textContent=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
-};
 </script>
 
 </body>
