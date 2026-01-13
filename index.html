@@ -72,6 +72,15 @@ button.submit{width:100%;background:var(--gold);color:#000;border:none;padding:1
 .hero h2{font-size:32px}
 .features{grid-template-columns:1fr}
 }
+  .reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 </head>
 
@@ -84,31 +93,28 @@ button.submit{width:100%;background:var(--gold);color:#000;border:none;padding:1
 <button id="langBtn">EN</button>
 </header>
 
-<div class="hero">
+<div class="hero reveal">
 <img src="./logo.png" class="hero-logo" alt="Snipers Taekwondo Logo">
 <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
 <p id="heroText">بيئة تدريب تصنع الأبطال</p>
 <a href="#register" id="heroBtn">سجل الآن</a>
 </div>
 
-<section>
+<section class="reveal">
 <h3 id="whyTitle">لماذا القناصون؟</h3>
 <div class="features">
-<div class="feature" id="f1">تدريب تايكواندو احترافي</div>
-<div class="feature" id="f2">لياقة بدنية عالية</div>
-<div class="feature" id="f3">دفاع عن النفس</div>
-<div class="feature" id="f4">بطولات محلية ودولية</div>
+<div class="feature reveal" id="f1">
+<div class="feature reveal" id="f2">
+<div class="feature reveal" id="f3">
+<div class="feature reveal" id="f4">
 </div>
-</section>
-
+  
 <section>
 <h3 id="timeTitle">أوقات التدريب</h3>
 <p id="timeText" style="text-align:center">
 طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق
 </p>
-</section>
-
-<section id="register">
+<section id="register" class="reveal">
 <h3 id="regTitle">التسجيل</h3>
 
 <form id="form" action="https://formspree.io/f/mqearygk" method="POST">
@@ -139,7 +145,7 @@ button.submit{width:100%;background:var(--gold);color:#000;border:none;padding:1
 <button class="submit">إرسال</button>
 <div id="success">تم إرسال طلبك بنجاح، سنتواصل معك قريبًا</div>
 </form>
-</section>
+<section class="contact reveal">
 
 <section class="contact">
 <h3 id="contactTitle">تواصل معنا</h3>
@@ -155,32 +161,44 @@ button.submit{width:100%;background:var(--gold);color:#000;border:none;padding:1
 <a class="whatsapp" href="https://wa.me/962798121015" target="_blank">WhatsApp</a>
 
 <script>
-setTimeout(()=>{document.getElementById("loading").style.display="none"},2500)
+setTimeout(()=>document.getElementById("loading").style.display="none",2500)
 
 document.getElementById("form").addEventListener("submit",function(e){
-e.preventDefault();
-fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}})
-.then(r=>{if(r.ok){this.reset();success.style.display="block"}})
-});
+  e.preventDefault()
+  fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}})
+  .then(r=>{if(r.ok){this.reset();success.style.display="block"}})
+})
 
 let ar=true;
 langBtn.onclick=()=>{
-ar=!ar;document.documentElement.dir=ar?"rtl":"ltr";langBtn.innerText=ar?"EN":"AR";
-heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
-heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
-heroBtn.innerText=ar?"سجل الآن":"Register Now";
-whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
-f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
-f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
-f3.innerText=ar?"دفاع عن النفس":"Self Defense";
-f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
-timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
-timeText.innerHTML=ar?"طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة<br>من عمر 3.5 سنوات فما فوق":"All week 1PM – 9PM<br>Friday off<br>Ages 3.5+";
-regTitle.innerText=ar?"التسجيل":"Registration";
-contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
-footer.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
+  ar=!ar;
+  document.documentElement.dir=ar?"rtl":"ltr";
+  langBtn.innerText=ar?"EN":"AR";
+  heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
+  heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
+  heroBtn.innerText=ar?"سجل الآن":"Register Now";
+  whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
+  f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
+  f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
+  f3.innerText=ar?"دفاع عن النفس":"Self Defense";
+  f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
+  timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
+  regTitle.innerText=ar?"التسجيل":"Registration";
+  contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
+  footer.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
 }
-</script>
 
+/* 🔥 Reveal animation */
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
+    </script>
 </body>
 </html>
