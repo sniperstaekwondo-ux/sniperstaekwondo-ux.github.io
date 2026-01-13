@@ -279,13 +279,13 @@ addressText.innerHTML = ar
 /* 🔥 Reveal animation */
 const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", () => {
+function revealNow(){
   reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("show");
-    }
+    el.classList.add("show");
   });
+}
+
+window.addEventListener("load", revealNow);
 });
     </script>
 </body>
