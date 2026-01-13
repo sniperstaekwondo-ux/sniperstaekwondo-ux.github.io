@@ -196,26 +196,36 @@ document.getElementById("form").addEventListener("submit",function(e){
   fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}})
   .then(r=>{if(r.ok){this.reset();success.style.display="block"}})
 })
+let ar = true;
 
-let ar=true;
-langBtn.onclick=()=>{
-  ar=!ar;
-  document.documentElement.dir=ar?"rtl":"ltr";
-  langBtn.innerText=ar?"EN":"AR";
-  heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
-  heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
-  heroBtn.innerText=ar?"سجل الآن":"Register Now";
-  whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
-  f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
-  f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
-  f3.innerText=ar?"دفاع عن النفس":"Self Defense";
-  f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
-  timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
-  regTitle.innerText=ar?"التسجيل":"Registration";
-  contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
-  footer.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
-}
+langBtn.onclick = () => {
+  ar = !ar;
 
+  document.documentElement.dir = ar ? "rtl" : "ltr";
+  langBtn.innerText = ar ? "EN" : "AR";
+
+  club.innerText = ar ? "نادي القناصون للتايكواندو" : "Snipers Taekwondo Club";
+
+  heroTitle.innerText = ar ? "قوة • انضباط • ثقة" : "Power • Discipline • Confidence";
+  heroText.innerText = ar ? "بيئة تدريب تصنع الأبطال" : "Training environment that builds champions";
+  heroBtn.innerText = ar ? "سجل الآن" : "Register Now";
+
+  whyTitle.innerText = ar ? "لماذا القناصون؟" : "Why Snipers?";
+  f1.innerText = ar ? "تدريب تايكواندو احترافي" : "Professional Taekwondo Training";
+  f2.innerText = ar ? "لياقة بدنية عالية" : "High Physical Fitness";
+  f3.innerText = ar ? "دفاع عن النفس" : "Self Defense";
+  f4.innerText = ar ? "بطولات محلية ودولية" : "Local & International Championships";
+
+  timeTitle.innerText = ar ? "أوقات التدريب" : "Training Schedule";
+  timeText.innerHTML = ar
+    ? "من عمر 3.5 سنوات<br>طوال الأسبوع من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة"
+    : "From age 3.5 years and above<br>All week from 1 PM to 9 PM<br>Friday is off";
+
+  regTitle.innerText = ar ? "التسجيل" : "Registration";
+  contactTitle.innerText = ar ? "تواصل معنا" : "Contact Us";
+  footer.innerText = ar ? "بإدارة الكابتن أحمد الأسمر" : "Managed by Captain Ahmad Al-Asmar";
+};
+  
 /* 🔥 Reveal animation */
 const reveals = document.querySelectorAll(".reveal");
 
