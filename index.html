@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Snipers Taekwondo Club | نادي القناصون للتايكواندو</title>
+<title>Snipers Taekwondo Club | نادي القناصون</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,10 +16,12 @@ body{margin:0;font-family:Tajawal;background:#000;color:#fff}
 /* Loader */
 #loader{
 position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}
-#loader span{color:var(--gold);font-size:38px;font-weight:900;animation:spin 2s infinite}
-@keyframes spin{0%{transform:rotate(0) scale(.7);opacity:0}
+#loader span{color:var(--gold);font-size:38px;font-weight:900;animation:spin 4s infinite}
+@keyframes spin{
+0%{transform:rotate(0) scale(.7);opacity:0}
 50%{transform:rotate(180deg) scale(1);opacity:1}
-100%{transform:rotate(360deg) scale(.7);opacity:0}}
+100%{transform:rotate(360deg) scale(.7);opacity:0}
+}
 
 /* Header */
 header{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:3px solid var(--gold)}
@@ -59,7 +60,7 @@ input,select,textarea{width:100%;padding:12px;margin:8px 0;background:#000;borde
 <div id="loader"><span>SNIPERS</span></div>
 
 <header>
-<h1 id="club">نادي القناصون</h1>
+<h1 id="club">نادي القناصون للتايكواندو</h1>
 <button id="langBtn">EN</button>
 </header>
 
@@ -82,7 +83,7 @@ input,select,textarea{width:100%;padding:12px;margin:8px 0;background:#000;borde
 
 <section>
 <h3 id="timeTitle">أوقات التدريب</h3>
-<p id="timeText">من 1:00 إلى 9:00 مساءً<br>الجمعة عطلة</p>
+<p id="timeText">من عمر 3.5 سنوات فما فوق<br>من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة</p>
 </section>
 
 <section id="register">
@@ -98,8 +99,15 @@ input,select,textarea{width:100%;padding:12px;margin:8px 0;background:#000;borde
 
 <section class="contact">
 <h3 id="contactTitle">تواصل معنا</h3>
-<p id="addressText">0798121015<br>عمان - حي عدن - دوار الجبل - مجمع رابح التجاري</p>
-<p><a href="https://maps.app.goo.gl/SgxTvs2KdEWkqJ7F8" target="_blank">عرض الموقع على Google Maps</a></p>
+<p id="addressText">
+0798121015<br>
+عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث
+</p>
+<p>
+<a href="https://maps.app.goo.gl/SgxTvs2KdEWkqJ7F8" target="_blank" style="color:#ffd700">
+عرض الموقع على Google Maps
+</a>
+</p>
 
 <div class="social">
 <a href="https://www.facebook.com/share/18536AXeie/" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -117,19 +125,35 @@ langBtn.onclick=()=>{
 ar=!ar;
 document.documentElement.dir=ar?"rtl":"ltr";
 langBtn.innerText=ar?"EN":"AR";
-club.innerText=ar?"نادي القناصون":"Snipers Taekwondo Club";
+
+club.innerText=ar?"نادي القناصون للتايكواندو":"Snipers Taekwondo Club";
 heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
 heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
 heroBtn.innerText=ar?"سجل الآن":"Register Now";
+
 whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
 f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
 f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
 f3.innerText=ar?"دفاع عن النفس":"Self Defense";
 f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
+
 timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
-timeText.innerHTML=ar?"من 1 إلى 9 مساءً<br>الجمعة عطلة":"From 1 PM to 9 PM<br>Friday is off";
+timeText.innerHTML=ar
+?"من عمر 3.5 سنوات فما فوق<br>من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة"
+:"From age 3.5 and above<br>From 1 PM to 9 PM<br>Friday is off";
+
 regTitle.innerText=ar?"التسجيل":"Registration";
+sendBtn.innerText=ar?"إرسال":"Send";
+
+nameInput.placeholder=ar?"الاسم الكامل":"Full Name";
+emailInput.placeholder=ar?"البريد الإلكتروني":"Email";
+phoneInput.placeholder=ar?"رقم الهاتف":"Phone Number";
+messageInput.placeholder=ar?"ملاحظات":"Notes";
+
 contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
+addressText.innerHTML=ar
+?"0798121015<br>عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث"
+:"0798121015<br>Amman - Aden Area - Al-Jabali Circle - Rabah Complex - 3rd Floor";
 }
 </script>
 
