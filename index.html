@@ -176,7 +176,10 @@ input,select,textarea{width:100%;background:#000;border:2px solid var(--gold);co
 
 <section class="contact">
 <h3 id="contactTitle">تواصل معنا</h3>
-<p>عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث<br>0798121015</p>
+<p id="addressText">
+0798121015<br>
+عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث
+</p>
 <p><a href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank">عرض الموقع على Google Maps</a></p>
 <div class="social">
 <a href="https://www.facebook.com/share/18536AXeie/" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -247,10 +250,10 @@ ratingSelect.options[0].text = ar ? "التقييم" : "Rating";
 
 // Contact text
 contactTitle.innerText = ar ? "تواصل معنا" : "Contact Us";
-document.querySelector(".contact p").innerText = ar
-  ? "عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث"
-  : "Amman - Aden Area - Al-Jabali Circle - Rabah Complex - 3rd Floor";
-};
+
+addressText.innerHTML = ar
+  ? "0798121015<br>عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث"
+  : "0798121015<br>Amman - Aden Area - Al-Jabali Circle - Rabah Complex - 3rd Floor";
   
 /* 🔥 Reveal animation */
 const reveals = document.querySelectorAll(".reveal");
