@@ -146,31 +146,30 @@ input,select,textarea{width:100%;background:#000;border:2px solid var(--gold);co
 <h3 id="regTitle">التسجيل</h3>
 
 <form id="form" action="https://formspree.io/f/mqearygk" method="POST">
-<input name="name" placeholder="الاسم الكامل" required>
-<input name="email" type="email" placeholder="البريد الإلكتروني" required>
-<input name="phone" placeholder="رقم الهاتف" required>
-
-<select name="day" required>
+<input id="nameInput" name="name" placeholder="الاسم الكامل" required>
+<input id="emailInput" name="email" type="email" placeholder="البريد الإلكتروني" required>
+<input id="phoneInput" name="phone" placeholder="رقم الهاتف" required>
+<select id="daySelect" name="day" required>
 <option value="">اختر اليوم</option>
 <option>السبت</option><option>الأحد</option><option>الإثنين</option>
 <option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option>
 </select>
 
-<select name="time" required>
+<select id="timeSelect" name="time" required>
 <option value="">اختر الوقت</option>
 <option>1:00 مساءً</option><option>2:00 مساءً</option><option>3:00 مساءً</option>
 <option>4:00 مساءً</option><option>5:00 مساءً</option><option>6:00 مساءً</option>
 <option>7:00 مساءً</option><option>8:00 مساءً</option><option>9:00 مساءً</option>
 </select>
 
-<select name="rating" required>
+<select id="ratingSelect" name="rating" required>
 <option value="">التقييم</option>
 <option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
 </select>
 
-<textarea name="message" placeholder="ملاحظات"></textarea>
+<textarea id="messageInput" name="message" placeholder="ملاحظات"></textarea>
 
-<button class="submit">إرسال</button>
+<button id="sendBtn" class="submit">إرسال</button>
 <div id="success">تم إرسال طلبك بنجاح، سنتواصل معك قريبًا</div>
 </form>
 <section class="contact reveal">
@@ -224,6 +223,33 @@ langBtn.onclick = () => {
   regTitle.innerText = ar ? "التسجيل" : "Registration";
   contactTitle.innerText = ar ? "تواصل معنا" : "Contact Us";
   footer.innerText = ar ? "بإدارة الكابتن أحمد الأسمر" : "Managed by Captain Ahmad Al-Asmar";
+// Form placeholders
+nameInput.placeholder = ar ? "الاسم الكامل" : "Full Name";
+emailInput.placeholder = ar ? "البريد الإلكتروني" : "Email";
+phoneInput.placeholder = ar ? "رقم الهاتف" : "Phone Number";
+messageInput.placeholder = ar ? "ملاحظات" : "Notes";
+sendBtn.innerText = ar ? "إرسال" : "Send";
+
+// Day select
+daySelect.options[0].text = ar ? "اختر اليوم" : "Choose day";
+daySelect.options[1].text = ar ? "السبت" : "Saturday";
+daySelect.options[2].text = ar ? "الأحد" : "Sunday";
+daySelect.options[3].text = ar ? "الإثنين" : "Monday";
+daySelect.options[4].text = ar ? "الثلاثاء" : "Tuesday";
+daySelect.options[5].text = ar ? "الأربعاء" : "Wednesday";
+daySelect.options[6].text = ar ? "الخميس" : "Thursday";
+
+// Time select
+timeSelect.options[0].text = ar ? "اختر الوقت" : "Choose time";
+
+// Rating
+ratingSelect.options[0].text = ar ? "التقييم" : "Rating";
+
+// Contact text
+contactTitle.innerText = ar ? "تواصل معنا" : "Contact Us";
+document.querySelector(".contact p").innerText = ar
+  ? "عمان - حي عدن - دوار الجبالي - مجمع رباح التجاري - الطابق الثالث"
+  : "Amman - Aden Area - Al-Jabali Circle - Rabah Complex - 3rd Floor";
 };
   
 /* 🔥 Reveal animation */
