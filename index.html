@@ -1,77 +1,154 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C33GYG1DGM"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-C33GYG1DGM');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Snipers Taekwondo Club</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{--gold:#ffd700;}
-*{box-sizing:border-box;}
-body{margin:0;font-family:Tajawal;background:#000;color:#fff}
-
-/* Loading */
-#loading{
-position:fixed;inset:0;background:#000;
-display:flex;align-items:center;justify-content:center;
-font-size:32px;color:var(--gold);z-index:9999;
-animation:spin 1.2s infinite;
-}
-@keyframes spin{
-0%{transform:scale(0.8) rotate(0);}
-50%{transform:scale(1) rotate(180deg);}
-100%{transform:scale(0.8) rotate(360deg);}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:'Tajawal',sans-serif;
+background:#000;
+color:#fff;
 }
 
-/* Header */
-header{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:3px solid var(--gold)}
-header h1{color:var(--gold)}
-header button{background:var(--gold);border:none;padding:8px 15px;border-radius:8px;font-weight:bold}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+border-bottom:3px solid var(--gold);
+}
 
-/* Hero */
-.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.hero img{width:140px;height:140px;border-radius:50%;box-shadow:0 0 30px var(--gold);margin-bottom:20px}
-.hero h2{color:var(--gold)}
-.hero a{margin-top:20px;background:var(--gold);color:#000;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:bold}
+header h1{
+color:var(--gold);
+margin:0;
+font-size:18px;
+}
 
-/* Sections */
-section{padding:25px;background:#111;margin:15px;border-radius:12px}
-h3{color:var(--gold);text-align:center}
+header button{
+background:var(--gold);
+border:none;
+padding:8px 14px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
 
-/* Features */
-.features{display:grid;grid-template-columns:1fr;gap:10px}
-.feature{background:#000;padding:15px;border-left:5px solid var(--gold);text-align:center}
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
 
-/* Form */
-input,select,textarea{width:100%;background:#000;border:2px solid var(--gold);color:#fff;padding:10px;margin:10px 0;border-radius:8px}
-button.submit{width:100%;background:var(--gold);border:none;padding:12px;font-weight:bold;border-radius:8px}
-#success{display:none;background:#0a3;padding:10px;text-align:center;border-radius:8px}
+.hero img{
+width:140px;
+height:140px;
+border-radius:50%;
+margin-bottom:20px;
+box-shadow:0 0 25px var(--gold);
+}
 
-/* Contact */
-.contact{text-align:center}
-.social i{font-size:28px;color:var(--gold);margin:10px}
+.hero h2{
+color:var(--gold);
+font-size:30px;
+margin:10px 0;
+}
 
-/* WhatsApp */
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:15px;border-radius:50%;font-size:24px}
+.hero p{max-width:600px}
+
+.hero a{
+margin-top:15px;
+background:var(--gold);
+color:#000;
+padding:12px 24px;
+border-radius:30px;
+font-weight:bold;
+text-decoration:none;
+}
+
+section{padding:25px 15px;background:#111}
+
+h3{text-align:center;color:var(--gold)}
+
+.features{
+display:grid;
+grid-template-columns:1fr;
+gap:15px;
+}
+
+.feature{
+background:#000;
+padding:15px;
+border-left:5px solid var(--gold);
+text-align:center;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:10px;
+max-width:400px;
+margin:auto;
+}
+
+input,select,textarea{
+padding:10px;
+background:#000;
+border:2px solid var(--gold);
+color:#fff;
+}
+
+button.submit{
+background:var(--gold);
+border:none;
+padding:12px;
+font-weight:bold;
+}
+
+#success{
+display:none;
+background:#063;
+padding:15px;
+margin-top:10px;
+text-align:center;
+}
+
+.contact{
+text-align:center;
+}
+
+.social a{
+color:var(--gold);
+font-size:30px;
+margin:0 10px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+color:#fff;
+padding:12px 18px;
+border-radius:30px;
+text-decoration:none;
+}
 </style>
-
 </head>
-<body>
 
-<div id="loading">SNIPERS</div>
+<body>
 
 <header>
 <h1 id="club">نادي القناصون للتايكواندو</h1>
@@ -81,7 +158,7 @@ button.submit{width:100%;background:var(--gold);border:none;padding:12px;font-we
 <div class="hero">
 <img src="logo.png">
 <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
-<p id="heroText">بيئة تدريب تبني الأبطال</p>
+<p id="heroText">بيئة تدريب تصنع الأبطال</p>
 <a href="#register" id="heroBtn">سجل الآن</a>
 </div>
 
@@ -97,7 +174,11 @@ button.submit{width:100%;background:var(--gold);border:none;padding:12px;font-we
 
 <section>
 <h3 id="timeTitle">أوقات التدريب</h3>
-<p id="timeText" style="text-align:center">من عمر 3.5 سنوات فما فوق<br>من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة</p>
+<p id="timeText" style="text-align:center">
+من عمر 3.5 سنوات فما فوق<br>
+من 1 مساءً إلى 9 مساءً<br>
+الجمعة عطلة
+</p>
 </section>
 
 <section id="register">
@@ -106,22 +187,6 @@ button.submit{width:100%;background:var(--gold);border:none;padding:12px;font-we
 <input id="nameInput" name="name" placeholder="الاسم الكامل" required>
 <input id="emailInput" name="email" type="email" placeholder="البريد الإلكتروني" required>
 <input id="phoneInput" name="phone" placeholder="رقم الهاتف" required>
-
-<select id="daySelect" name="day">
-<option>اختر اليوم</option>
-<option>السبت</option><option>الأحد</option><option>الإثنين</option><option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option>
-</select>
-
-<select id="timeSelect" name="time">
-<option>اختر الوقت</option>
-<option>1:00 - 3:00</option><option>4:00 - 6:00</option><option>7:00 - 9:00</option>
-</select>
-
-<select id="ratingSelect" name="rating">
-<option>التقييم</option>
-<option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
-</select>
-
 <textarea id="messageInput" name="message" placeholder="ملاحظات"></textarea>
 <button class="submit" id="sendBtn">إرسال</button>
 <div id="success">تم إرسال طلبك بنجاح</div>
@@ -130,44 +195,58 @@ button.submit{width:100%;background:var(--gold);border:none;padding:12px;font-we
 
 <section class="contact">
 <h3 id="contactTitle">تواصل معنا</h3>
-<p id="addressText">0798121015<br>عمان – دوار الجبل – مجمع رباع التجاري – الطابق الثالث</p>
+<p id="addressText">
+0798121015<br>
+عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث
+</p>
+<p><a href="https://maps.app.goo.gl/SgxTvs2KdEWkqJ7F8" target="_blank">عرض الموقع على Google Maps</a></p>
+
 <div class="social">
 <a href="https://www.facebook.com/share/18536AXeie/" target="_blank"><i class="fab fa-facebook"></i></a>
 <a href="https://www.instagram.com/academy_snipers_taekwondo" target="_blank"><i class="fab fa-instagram"></i></a>
 </div>
-<p id="footer">بإدارة الكابتن أحمد الأسمر</p>
 </section>
 
-<a class="whatsapp" href="https://wa.me/962798121015" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a class="whatsapp" href="https://wa.me/962798121015" target="_blank">WhatsApp</a>
 
 <script>
-window.onload=()=>document.getElementById("loading").remove();
+let ar = true;
 
-document.getElementById("form").addEventListener("submit",function(e){
-e.preventDefault();
-fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}})
-.then(r=>{if(r.ok){this.reset();success.style.display="block"}})
-});
-
-let ar=true;
-langBtn.onclick=()=>{
+langBtn.onclick = ()=>{
 ar=!ar;
-document.documentElement.dir=ar?"rtl":"ltr";
-langBtn.innerText=ar?"EN":"AR";
-club.innerText=ar?"نادي القناصون للتايكواندو":"Snipers Taekwondo Club";
-heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
-heroText.innerText=ar?"بيئة تدريب تبني الأبطال":"Training environment that builds champions";
-heroBtn.innerText=ar?"سجل الآن":"Register Now";
-whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
-f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
-f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
-f3.innerText=ar?"دفاع عن النفس":"Self Defense";
-f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
-timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
-regTitle.innerText=ar?"التسجيل":"Registration";
-contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
-footer.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
+document.documentElement.dir = ar?"rtl":"ltr";
+langBtn.innerText = ar?"EN":"AR";
+
+club.innerText = ar?"نادي القناصون للتايكواندو":"Snipers Taekwondo Club";
+heroTitle.innerText = ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
+heroText.innerText = ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
+heroBtn.innerText = ar?"سجل الآن":"Register Now";
+
+whyTitle.innerText = ar?"لماذا القناصون؟":"Why Snipers?";
+f1.innerText = ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
+f2.innerText = ar?"لياقة بدنية عالية":"High Physical Fitness";
+f3.innerText = ar?"دفاع عن النفس":"Self Defense";
+f4.innerText = ar?"بطولات محلية ودولية":"Local & International Championships";
+
+timeTitle.innerText = ar?"أوقات التدريب":"Training Schedule";
+timeText.innerHTML = ar?
+"من عمر 3.5 سنوات فما فوق<br>من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة":
+"From age 3.5 and above<br>All week from 1 PM to 9 PM<br>Friday is off";
+
+regTitle.innerText = ar?"التسجيل":"Registration";
+sendBtn.innerText = ar?"إرسال":"Send";
+
+contactTitle.innerText = ar?"تواصل معنا":"Contact Us";
+addressText.innerHTML = ar?
+"0798121015<br>عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث":
+"0798121015<br>Amman – Aden Area – Al-Jabali Circle – Rabah Complex – 3rd Floor";
 };
+
+form.addEventListener("submit",e=>{
+e.preventDefault();
+fetch(form.action,{method:"POST",body:new FormData(form)})
+.then(()=>{success.style.display="block";form.reset();});
+});
 </script>
 
 </body>
