@@ -202,8 +202,7 @@ input,select,textarea{width:100%;background:#000;border:2px solid var(--gold);co
 
 <script>
 window.onload = () => {
-  document.getElementById("loading").style.display = "none";
-};
+  document.getElementById("loading").remove();
 
 document.getElementById("form").addEventListener("submit",function(e){
   e.preventDefault()
