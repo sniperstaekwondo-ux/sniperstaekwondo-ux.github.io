@@ -53,7 +53,13 @@ width:150px;height:150px;border-radius:50%;
 box-shadow:0 0 35px var(--gold);margin-bottom:20px
 }
 .hero h2{color:var(--gold);font-size:36px;margin:10px 0}
-.hero p{min-height:28px;font-size:18px}
+.hero p{
+min-height:28px;
+font-size:18px;
+transition:opacity .8s ease;
+text-shadow:0 0 10px rgba(255,215,0,.35),
+            0 0 20px rgba(255,215,0,.2);
+}
 .hero .buttons{
 display:flex;gap:12px;flex-wrap:wrap;justify-content:center
 }
@@ -279,24 +285,19 @@ const emailInput=document.getElementById("emailInput");
 const phoneInput=document.getElementById("phoneInput");
 const messageInput=document.getElementById("messageInput");
 
-/* ===== HERO TEXT ROTATION ===== */
-const heroTextsAR = [
-  "خبرة تسعة سنوات",
-  "نصنع من طفلك بطل",
-  "سجل الآن!"
-];
-const heroTextsEN = [
-  "9 Years of Experience",
-  "We Make Your Child a Champion",
-  "Register Now!"
-];
-let heroIndex = 0;
-setInterval(() => {
-  heroText.innerText = ar
-    ? heroTextsAR[heroIndex % heroTextsAR.length]
-    : heroTextsEN[heroIndex % heroTextsEN.length];
-  heroIndex++;
-}, 1000);
+/* ===== HERO TEXT ROTATION (SLOW + FADE) ===== */
+const heroTextsAR=["خبرة تسعة سنوات","نصنع من طفلك بطل","سجل الآن!"];
+const heroTextsEN=["9 Years of Experience","We Make Your Child a Champion","Register Now!"];
+let heroIndex=0;
+
+setInterval(()=>{
+  heroText.style.opacity="0";
+  setTimeout(()=>{
+    heroText.innerText=ar?heroTextsAR[heroIndex%3]:heroTextsEN[heroIndex%3];
+    heroText.style.opacity="1";
+    heroIndex++;
+  },500);
+},2500);
 
 /* ===== LANGUAGE ===== */
 let ar=true;
@@ -310,10 +311,10 @@ heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Disciplin
 heroBtn.innerText=ar?"سجل الآن":"Register Now";
 visitBtn.innerText=ar?"احجز زيارة":"Book a Visit";
 
-nameInput.placeholder = ar ? "الاسم الكامل" : "Full Name";
-emailInput.placeholder = ar ? "البريد الإلكتروني" : "Email Address";
-phoneInput.placeholder = ar ? "رقم الهاتف" : "Phone Number";
-messageInput.placeholder = ar ? "ملاحظات" : "Notes";
+nameInput.placeholder=ar?"الاسم الكامل":"Full Name";
+emailInput.placeholder=ar?"البريد الإلكتروني":"Email Address";
+phoneInput.placeholder=ar?"رقم الهاتف":"Phone Number";
+messageInput.placeholder=ar?"ملاحظات":"Notes";
 
 whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
 f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
