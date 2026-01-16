@@ -13,20 +13,24 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Tajawal;background:#000;color:#fff}
 
-/* ===== LOADER ===== */
+/* ===== LOADER (FIXED) ===== */
 #loader{
 position:fixed;inset:0;background:#000;
 display:flex;align-items:center;justify-content:center;
 z-index:9999;transition:.6s;
 }
-#loader .word{display:flex;gap:6px}
-#loader .word span{
-color:var(--gold);font-size:72px;font-weight:900;
-opacity:0;transform:translateY(20px);
-animation:reveal .6s forwards;
+#loader h1{
+color:var(--gold);
+font-size:72px;
+font-weight:900;
+letter-spacing:6px;
+animation:spinFade 2.5s ease-in-out forwards;
 }
-#loader .word span:nth-child(n){animation-delay:calc(var(--i)*.15s)}
-@keyframes reveal{to{opacity:1;transform:translateY(0)}}
+@keyframes spinFade{
+0%{transform:rotate(0deg) scale(.7);opacity:0}
+50%{transform:rotate(180deg) scale(1);opacity:1}
+100%{transform:rotate(360deg) scale(1.1);opacity:0}
+}
 
 /* ===== HEADER ===== */
 header{
@@ -129,10 +133,7 @@ pointer-events:none;transition:.3s
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="word">
-    <span style="--i:1">S</span><span style="--i:2">N</span><span style="--i:3">I</span>
-    <span style="--i:4">P</span><span style="--i:5">E</span><span style="--i:6">R</span><span style="--i:7">S</span>
-  </div>
+  <h1>SNIPERS</h1>
 </div>
 
 <header>
@@ -273,15 +274,10 @@ const addressText=document.getElementById("addressText");
 const mapLink=document.getElementById("mapLink");
 const footerText=document.getElementById("footerText");
 const langBtn=document.getElementById("langBtn");
-
-/* ===== MOTIVATION TEXT ===== */
-const textsAR=["نبني الثقة قبل البطولة","الانضباط قبل القوة","الأبطال يُصنعون هنا"];
-const textsEN=["Building confidence before competition","Discipline before power","Champions are made here"];
-let ti=0;
-setInterval(()=>{
-heroText.innerText=ar?textsAR[ti%3]:textsEN[ti%3];
-ti++;
-},3500);
+const nameInput=document.getElementById("nameInput");
+const emailInput=document.getElementById("emailInput");
+const phoneInput=document.getElementById("phoneInput");
+const messageInput=document.getElementById("messageInput");
 
 /* ===== LANGUAGE ===== */
 let ar=true;
@@ -294,6 +290,11 @@ club.innerText=ar?"نادي القناصون للتايكواندو":"Snipers Ta
 heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
 heroBtn.innerText=ar?"سجل الآن":"Register Now";
 visitBtn.innerText=ar?"احجز زيارة":"Book a Visit";
+
+nameInput.placeholder = ar ? "الاسم الكامل" : "Full Name";
+emailInput.placeholder = ar ? "البريد الإلكتروني" : "Email Address";
+phoneInput.placeholder = ar ? "رقم الهاتف" : "Phone Number";
+messageInput.placeholder = ar ? "ملاحظات" : "Notes";
 
 whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
 f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
