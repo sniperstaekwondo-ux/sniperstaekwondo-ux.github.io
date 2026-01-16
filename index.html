@@ -13,37 +13,22 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Tajawal;background:#000;color:#fff}
 
-/* ================= LOADER (TEXT REVEAL) ================= */
+/* ===== LOADER ===== */
 #loader{
 position:fixed;inset:0;background:#000;
 display:flex;align-items:center;justify-content:center;
-z-index:9999;
-transition:opacity .6s ease;
+z-index:9999;transition:.6s;
 }
-#loader .word{
-display:flex;gap:6px;
-}
+#loader .word{display:flex;gap:6px}
 #loader .word span{
-color:var(--gold);
-font-size:72px;
-font-weight:900;
-opacity:0;
-transform:translateY(20px);
+color:var(--gold);font-size:72px;font-weight:900;
+opacity:0;transform:translateY(20px);
 animation:reveal .6s forwards;
 }
-#loader .word span:nth-child(1){animation-delay:0s}
-#loader .word span:nth-child(2){animation-delay:.15s}
-#loader .word span:nth-child(3){animation-delay:.3s}
-#loader .word span:nth-child(4){animation-delay:.45s}
-#loader .word span:nth-child(5){animation-delay:.6s}
-#loader .word span:nth-child(6){animation-delay:.75s}
-#loader .word span:nth-child(7){animation-delay:.9s}
+#loader .word span:nth-child(n){animation-delay:calc(var(--i)*.15s)}
+@keyframes reveal{to{opacity:1;transform:translateY(0)}}
 
-@keyframes reveal{
-to{opacity:1;transform:translateY(0);}
-}
-
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 header{
 display:flex;justify-content:space-between;align-items:center;
 padding:15px;border-bottom:3px solid var(--gold)
@@ -54,37 +39,42 @@ background:var(--gold);border:none;padding:8px 14px;
 border-radius:6px;font-weight:bold;cursor:pointer
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
-min-height:80vh;
-display:flex;flex-direction:column;
-align-items:center;justify-content:center;
-text-align:center;padding:20px
+min-height:80vh;display:flex;flex-direction:column;
+align-items:center;justify-content:center;text-align:center;padding:20px
 }
 .hero img{
 width:150px;height:150px;border-radius:50%;
 box-shadow:0 0 35px var(--gold);margin-bottom:20px
 }
 .hero h2{color:var(--gold);font-size:36px;margin:10px 0}
+.hero p{min-height:24px}
+.hero .buttons{
+display:flex;gap:12px;flex-wrap:wrap;justify-content:center
+}
 .hero a{
-margin-top:15px;background:var(--gold);
-color:#000;padding:12px 26px;
-border-radius:999px;font-weight:bold;
-text-decoration:none;
+background:var(--gold);color:#000;padding:12px 26px;
+border-radius:999px;font-weight:bold;text-decoration:none;
 transition:.3s;
+}
+.hero a.secondary{
+background:#111;color:var(--gold);
+border:2px solid var(--gold)
 }
 .hero a:hover{transform:scale(1.05);box-shadow:0 0 20px var(--gold)}
 
-/* ================= SECTIONS + SCROLL ================= */
+/* ===== SECTIONS ===== */
 section{
 padding:30px 15px;background:#111;
 opacity:0;transform:translateY(40px);
-transition:.8s ease;
+transition:.8s
 }
 section.show{opacity:1;transform:translateY(0)}
+section.highlight{box-shadow:0 0 25px var(--gold)}
 h3{text-align:center;color:var(--gold)}
 
-/* ================= FEATURES ================= */
+/* ===== FEATURES ===== */
 .features{display:grid;grid-template-columns:1fr;gap:15px}
 .feature{
 background:#000;padding:15px;
@@ -92,54 +82,46 @@ border-left:5px solid var(--gold);
 text-align:center
 }
 
-/* ================= FORM ================= */
+/* ===== FORM ===== */
 form{max-width:420px;margin:auto}
-input,textarea{
+input,textarea,select{
 width:100%;padding:12px;margin:8px 0;
 background:#000;border:2px solid var(--gold);
-color:#fff;font-size:15px;
-transition:.3s;
+color:#fff;font-size:15px;transition:.3s
 }
-input:focus,textarea:focus{
-outline:none;
-box-shadow:0 0 10px var(--gold);
+input:focus,textarea:focus,select:focus{
+outline:none;box-shadow:0 0 10px var(--gold)
 }
 .submit{
 background:var(--gold);border:none;
 padding:12px;width:100%;
 font-weight:bold;cursor:pointer;
-transition:.3s;
+transition:.3s
 }
 .submit:hover{transform:scale(1.05)}
 #success{
 display:none;background:#0a3;
 padding:12px;text-align:center;
-margin-top:10px;border-radius:6px;
-animation:reveal .6s forwards;
+margin-top:10px;border-radius:6px
 }
 
-/* ================= CONTACT ================= */
+/* ===== CONTACT ===== */
 .contact{text-align:center}
 .social a{
-font-size:30px;margin:0 10px;color:var(--gold);
-transition:.3s;
+font-size:30px;margin:0 10px;
+color:var(--gold);transition:.3s
 }
-.social a:hover{
-transform:scale(1.2) rotate(8deg);
-}
+.social a:hover{transform:scale(1.2) rotate(8deg)}
 
-/* ================= WHATSAPP ================= */
+/* ===== WHATSAPP ===== */
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
 background:#25d366;color:#fff;
 padding:14px;border-radius:50%;
-font-size:26px;
-animation:pulse 6s infinite;
+font-size:26px;opacity:0;
+pointer-events:none;transition:.3s
 }
-@keyframes pulse{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.1)}
-}
+.whatsapp.show{opacity:1;pointer-events:auto}
 </style>
 </head>
 
@@ -148,7 +130,8 @@ animation:pulse 6s infinite;
 <!-- LOADER -->
 <div id="loader">
   <div class="word">
-    <span>S</span><span>N</span><span>I</span><span>P</span><span>E</span><span>R</span><span>S</span>
+    <span style="--i:1">S</span><span style="--i:2">N</span><span style="--i:3">I</span>
+    <span style="--i:4">P</span><span style="--i:5">E</span><span style="--i:6">R</span><span style="--i:7">S</span>
   </div>
 </div>
 
@@ -160,11 +143,15 @@ animation:pulse 6s infinite;
 <div class="hero">
 <img src="logo.png">
 <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
-<p id="heroText">بيئة تدريب تصنع الأبطال</p>
+<p id="heroText">نبني الثقة قبل البطولة</p>
+
+<div class="buttons">
 <a href="#register" id="heroBtn">سجل الآن</a>
+<a href="#register" class="secondary" id="visitBtn">احجز زيارة</a>
+</div>
 </div>
 
-<section class="reveal">
+<section>
 <h3 id="whyTitle">لماذا القناصون؟</h3>
 <div class="features">
 <div class="feature" id="f1">تدريب تايكواندو احترافي</div>
@@ -174,7 +161,7 @@ animation:pulse 6s infinite;
 </div>
 </section>
 
-<section class="reveal">
+<section>
 <h3 id="timeTitle">أوقات التدريب</h3>
 <p id="timeText" style="text-align:center">
 من عمر 3.5 سنوات فما فوق<br>
@@ -183,7 +170,7 @@ animation:pulse 6s infinite;
 </p>
 </section>
 
-<section id="register" class="reveal">
+<section id="register">
 <h3 id="regTitle">التسجيل</h3>
 
 <form id="form">
@@ -194,40 +181,44 @@ animation:pulse 6s infinite;
 <input id="phoneInput" name="phone" placeholder="رقم الهاتف" required>
 <textarea id="messageInput" name="message" placeholder="ملاحظات"></textarea>
 
+<label id="ratingLabel">التقييم (اختياري)</label>
+<select id="ratingInput" name="rating">
+<option value="">اختر التقييم</option>
+<option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option>
+<option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
+</select>
+
 <button class="submit" id="sendBtn">إرسال</button>
-<div id="success">تم إرسال طلبك بنجاح، سنقوم بالتواصل معك قريبًا</div>
+<div id="success">تم استلام طلبك، سنقوم بالتواصل معك قريبًا</div>
 </form>
+
+<p style="margin-top:15px;font-weight:bold;text-align:center" id="footerText">
+بإدارة الكابتن أحمد الأسمر
+</p>
 </section>
 
-<section class="contact reveal">
+<section class="contact">
 <h3 id="contactTitle">تواصل معنا</h3>
 <p id="addressText">
 0798121015<br>
 عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث
 </p>
-
-<p>
-<a id="mapLink" href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank" style="color:#ffd700">
+<a id="mapLink" href="https://maps.app.goo.gl/SgxTvs2KdEWKqJ7F8" target="_blank" style="color:var(--gold)">
 عرض الموقع على Google Maps
 </a>
-</p>
 
 <div class="social">
 <a href="https://www.facebook.com/share/18536AXeie/" target="_blank"><i class="fab fa-facebook"></i></a>
 <a href="https://www.instagram.com/academy_snipers_taekwondo" target="_blank"><i class="fab fa-instagram"></i></a>
 </div>
-
-<p style="margin-top:20px;font-weight:bold" id="footerText">
-بإدارة الكابتن أحمد الأسمر
-</p>
 </section>
 
-<a class="whatsapp" href="https://wa.me/962798121015" target="_blank">
+<a class="whatsapp" id="whatsappBtn" href="https://wa.me/962798121015" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
-/* LOADER */
+/* ===== LOADER ===== */
 window.onload=()=>{
 setTimeout(()=>{
 const l=document.getElementById("loader");
@@ -236,17 +227,20 @@ setTimeout(()=>l.remove(),600);
 },1800);
 };
 
-/* SCROLL */
-const reveals=document.querySelectorAll(".reveal");
+/* ===== SCROLL ===== */
+const sections=document.querySelectorAll("section");
+const whatsapp=document.getElementById("whatsappBtn");
 window.addEventListener("scroll",()=>{
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add("show");
+sections.forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-120){
+s.classList.add("show");
+if(s.id==="register")s.classList.add("highlight");
 }
 });
+whatsapp.classList.toggle("show",window.scrollY>300);
 });
 
-/* FORM */
+/* ===== FORM ===== */
 const form=document.getElementById("form");
 const success=document.getElementById("success");
 form.addEventListener("submit",e=>{
@@ -257,11 +251,12 @@ if(d.success){success.style.display="block";form.reset();}
 });
 });
 
-/* LANGUAGE (كما كان) */
+/* ===== ELEMENTS ===== */
 const club=document.getElementById("club");
 const heroTitle=document.getElementById("heroTitle");
 const heroText=document.getElementById("heroText");
 const heroBtn=document.getElementById("heroBtn");
+const visitBtn=document.getElementById("visitBtn");
 const whyTitle=document.getElementById("whyTitle");
 const f1=document.getElementById("f1");
 const f2=document.getElementById("f2");
@@ -271,44 +266,56 @@ const timeTitle=document.getElementById("timeTitle");
 const timeText=document.getElementById("timeText");
 const regTitle=document.getElementById("regTitle");
 const sendBtn=document.getElementById("sendBtn");
-const nameInput=document.getElementById("nameInput");
-const emailInput=document.getElementById("emailInput");
-const phoneInput=document.getElementById("phoneInput");
-const messageInput=document.getElementById("messageInput");
+const ratingLabel=document.getElementById("ratingLabel");
+const ratingInput=document.getElementById("ratingInput");
 const contactTitle=document.getElementById("contactTitle");
 const addressText=document.getElementById("addressText");
 const mapLink=document.getElementById("mapLink");
 const footerText=document.getElementById("footerText");
 const langBtn=document.getElementById("langBtn");
 
+/* ===== MOTIVATION TEXT ===== */
+const textsAR=["نبني الثقة قبل البطولة","الانضباط قبل القوة","الأبطال يُصنعون هنا"];
+const textsEN=["Building confidence before competition","Discipline before power","Champions are made here"];
+let ti=0;
+setInterval(()=>{
+heroText.innerText=ar?textsAR[ti%3]:textsEN[ti%3];
+ti++;
+},3500);
+
+/* ===== LANGUAGE ===== */
 let ar=true;
 langBtn.onclick=()=>{
 ar=!ar;
 document.documentElement.dir=ar?"rtl":"ltr";
 langBtn.innerText=ar?"EN":"AR";
+
 club.innerText=ar?"نادي القناصون للتايكواندو":"Snipers Taekwondo Club";
 heroTitle.innerText=ar?"قوة • انضباط • ثقة":"Power • Discipline • Confidence";
-heroText.innerText=ar?"بيئة تدريب تصنع الأبطال":"Training environment that builds champions";
 heroBtn.innerText=ar?"سجل الآن":"Register Now";
+visitBtn.innerText=ar?"احجز زيارة":"Book a Visit";
+
 whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
 f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
 f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
 f3.innerText=ar?"دفاع عن النفس":"Self Defense";
 f4.innerText=ar?"بطولات محلية ودولية":"Local & International Championships";
+
 timeTitle.innerText=ar?"أوقات التدريب":"Training Schedule";
 timeText.innerHTML=ar?
 "من عمر 3.5 سنوات فما فوق<br>من 1 مساءً إلى 9 مساءً<br>الجمعة عطلة":
 "From age 3.5 and above<br>From 1 PM to 9 PM<br>Friday is off";
+
 regTitle.innerText=ar?"التسجيل":"Registration";
 sendBtn.innerText=ar?"إرسال":"Send";
-nameInput.placeholder=ar?"الاسم الكامل":"Full Name";
-emailInput.placeholder=ar?"البريد الإلكتروني":"Email";
-phoneInput.placeholder=ar?"رقم الهاتف":"Phone Number";
-messageInput.placeholder=ar?"ملاحظات":"Notes";
+ratingLabel.innerText=ar?"التقييم (اختياري)":"Rating (optional)";
+ratingInput.options[0].text=ar?"اختر التقييم":"Choose rating";
+
 contactTitle.innerText=ar?"تواصل معنا":"Contact Us";
 addressText.innerHTML=ar?
 "0798121015<br>عمان – حي عدن – دوار الجبالي – مجمع رباح التجاري – الطابق الثالث":
 "0798121015<br>Amman – Aden Area – Al-Jabali Circle – Rabah Complex – 3rd Floor";
+
 mapLink.innerText=ar?"عرض الموقع على Google Maps":"View location on Google Maps";
 footerText.innerText=ar?"بإدارة الكابتن أحمد الأسمر":"Managed by Captain Ahmad Al-Asmar";
 };
