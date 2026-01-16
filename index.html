@@ -144,11 +144,14 @@ font-size:26px
 <section id="register">
 <h3 id="regTitle">التسجيل</h3>
 
-<form id="form" action="https://formspree.io/f/mqaegryk" method="POST">
+<form id="form">
+<input type="hidden" name="access_key" value="f23be2b0-ea8e-40d8-9bd3-02b255a99214">
+
 <input id="nameInput" name="name" placeholder="الاسم الكامل" required>
 <input id="emailInput" name="email" type="email" placeholder="البريد الإلكتروني" required>
 <input id="phoneInput" name="phone" placeholder="رقم الهاتف" required>
 <textarea id="messageInput" name="message" placeholder="ملاحظات"></textarea>
+
 <button class="submit" id="sendBtn">إرسال</button>
 <div id="success">تم إرسال طلبك بنجاح، سنقوم بالتواصل معك قريبًا</div>
 </form>
@@ -191,12 +194,26 @@ const success = document.getElementById("success");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  fetch(form.action, { method: "POST", body: new FormData(form) })
-    .then(() => {
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: new FormData(form)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
       success.style.display = "block";
       form.reset();
-    });
+    } else {
+      alert("صار خطأ أثناء الإرسال");
+    }
+  })
+  .catch(() => {
+    alert("مشكلة اتصال");
+  });
 });
+
+/* ===== Language Switch ===== */
 const club = document.getElementById("club");
 const heroTitle = document.getElementById("heroTitle");
 const heroText = document.getElementById("heroText");
@@ -219,6 +236,7 @@ const addressText = document.getElementById("addressText");
 const mapLink = document.getElementById("mapLink");
 const footerText = document.getElementById("footerText");
 const langBtn = document.getElementById("langBtn");
+
 let ar = true;
 langBtn.onclick = () => {
   ar = !ar;
