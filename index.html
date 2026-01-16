@@ -13,7 +13,7 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Tajawal;background:#000;color:#fff}
 
-/* ===== LOADER (FIXED) ===== */
+/* ===== LOADER ===== */
 #loader{
 position:fixed;inset:0;background:#000;
 display:flex;align-items:center;justify-content:center;
@@ -53,7 +53,7 @@ width:150px;height:150px;border-radius:50%;
 box-shadow:0 0 35px var(--gold);margin-bottom:20px
 }
 .hero h2{color:var(--gold);font-size:36px;margin:10px 0}
-.hero p{min-height:24px}
+.hero p{min-height:28px;font-size:18px}
 .hero .buttons{
 display:flex;gap:12px;flex-wrap:wrap;justify-content:center
 }
@@ -144,7 +144,7 @@ pointer-events:none;transition:.3s
 <div class="hero">
 <img src="logo.png">
 <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
-<p id="heroText">نبني الثقة قبل البطولة</p>
+<p id="heroText">خبرة تسعة سنوات</p>
 
 <div class="buttons">
 <a href="#register" id="heroBtn">سجل الآن</a>
@@ -278,6 +278,25 @@ const nameInput=document.getElementById("nameInput");
 const emailInput=document.getElementById("emailInput");
 const phoneInput=document.getElementById("phoneInput");
 const messageInput=document.getElementById("messageInput");
+
+/* ===== HERO TEXT ROTATION ===== */
+const heroTextsAR = [
+  "خبرة تسعة سنوات",
+  "نصنع من طفلك بطل",
+  "سجل الآن!"
+];
+const heroTextsEN = [
+  "9 Years of Experience",
+  "We Make Your Child a Champion",
+  "Register Now!"
+];
+let heroIndex = 0;
+setInterval(() => {
+  heroText.innerText = ar
+    ? heroTextsAR[heroIndex % heroTextsAR.length]
+    : heroTextsEN[heroIndex % heroTextsEN.length];
+  heroIndex++;
+}, 1000);
 
 /* ===== LANGUAGE ===== */
 let ar=true;
