@@ -184,10 +184,9 @@ pointer-events:none;transition:.3s
 <input type="hidden" name="access_key" value="f23be2b0-ea8e-40d8-9bd3-02b255a99214">
 
 <input id="nameInput" name="name" placeholder="الاسم الكامل" required>
-<input id="emailInput" name="email" type="email" placeholder="البريد الإلكتروني" required>
+<input id="emailInput" name="email" type="email" placeholder="البريد الإلكتروني (اختياري – للتواصل لاحقًا)">
 <input id="phoneInput" name="phone" placeholder="رقم الهاتف" required>
-<textarea id="messageInput" name="message" placeholder="ملاحظات"></textarea>
-
+<textarea id="messageInput" name="message" placeholder="ملاحظات (العمر – موقع السكن – أي معلومات إضافية تهمنا)"></textarea>
 <label id="ratingLabel">التقييم (اختياري)</label>
 <select id="ratingInput" name="rating">
 <option value="">اختر التقييم</option>
@@ -312,10 +311,13 @@ heroBtn.innerText=ar?"سجل الآن":"Register Now";
 visitBtn.innerText=ar?"احجز زيارة":"Book a Visit";
 
 nameInput.placeholder=ar?"الاسم الكامل":"Full Name";
-emailInput.placeholder=ar?"البريد الإلكتروني":"Email Address";
+emailInput.placeholder = ar
+  ? "البريد الإلكتروني (اختياري – للتواصل لاحقًا)"
+  : "Email (optional – for later contact)";
 phoneInput.placeholder=ar?"رقم الهاتف":"Phone Number";
-messageInput.placeholder=ar?"ملاحظات":"Notes";
-
+messageInput.placeholder = ar
+  ? "ملاحظات (العمر – موقع السكن – أي معلومات إضافية تهمنا)"
+  : "Notes (age – area of residence – any additional information)";
 whyTitle.innerText=ar?"لماذا القناصون؟":"Why Snipers?";
 f1.innerText=ar?"تدريب تايكواندو احترافي":"Professional Taekwondo Training";
 f2.innerText=ar?"لياقة بدنية عالية":"High Physical Fitness";
