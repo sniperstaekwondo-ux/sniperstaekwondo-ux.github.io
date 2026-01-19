@@ -246,15 +246,60 @@ if(s.id==="register")s.classList.add("highlight");
 whatsapp.classList.toggle("show",window.scrollY>300);
 });
 
-/* ===== FORM ===== */
-const form=document.getElementById("form");
-const success=document.getElementById("success");
-form.addEventListener("submit",e=>{
-e.preventDefault();
-fetch("https://api.web3forms.com/submit",{method:"POST",body:new FormData(form)})
-.then(r=>r.json()).then(d=>{
-if(d.success){success.style.display="block";form.reset();}
-});
+/* ===== FORM TO WHATSAPP ===== */
+const form = document.getElementById("form");
+const success = document.getElementById("success");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const email = emailInput.value.trim();
+  const msg = messageInput.value.trim();
+  const rating = ratingInput.value;
+
+  const clubNumber = "962798121015"; // رقم النادي
+
+  const textAR =
+`طلب تسجيل جديد:
+الاسم: ${name}
+الهاتف: ${phone}
+الإيميل: ${email || "غير مدخل"}
+ملاحظات: ${msg || "لا يوجد"}
+التقييم: ${rating || "-"}`;
+
+  const textEN =
+`New Registration:
+Name: ${name}
+Phone: ${phone}
+Email: ${email || "Not provided"}
+Notes: ${msg || "None"}
+Rating: ${rating || "-"}`;
+
+  const messageToClub = encodeURIComponent(ar ? textAR : textEN);
+
+  // 1️⃣ فتح واتس النادي
+  window.open(`https://wa.me/${clubNumber}?text=${messageToClub}`, "_blank");
+
+  // 2️⃣ رسالة ترحيب للزائر
+  const welcomeAR = `أهلًا ${name} 🌟
+تم استلام طلبك في نادي القناصون للتايكواندو
+سنقوم بالتواصل معك قريبًا 💪🥋`;
+
+  const welcomeEN = `Hi ${name} 🌟
+Your request was received at Snipers Taekwondo Club.
+We’ll contact you soon 💪🥋`;
+
+  setTimeout(()=>{
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(ar ? welcomeAR : welcomeEN)}`,
+      "_blank"
+    );
+  }, 800);
+
+  success.style.display = "block";
+  form.reset();
 });
 
 /* ===== ELEMENTS ===== */
