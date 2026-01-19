@@ -57,8 +57,6 @@ box-shadow:0 0 35px var(--gold);margin-bottom:20px
 min-height:28px;
 font-size:18px;
 transition:opacity .8s ease;
-text-shadow:0 0 10px rgba(255,215,0,.35),
-            0 0 20px rgba(255,215,0,.2);
 }
 .hero .buttons{
 display:flex;gap:12px;flex-wrap:wrap;justify-content:center
@@ -82,6 +80,7 @@ transition:.8s
 }
 section.show{opacity:1;transform:translateY(0)}
 section.highlight{box-shadow:0 0 25px var(--gold)}
+
 h3{text-align:center;color:var(--gold)}
 
 /* ===== FEATURES ===== */
@@ -97,39 +96,24 @@ form{max-width:420px;margin:auto}
 input,textarea,select{
 width:100%;padding:12px;margin:8px 0;
 background:#000;border:2px solid var(--gold);
-color:#fff;font-size:15px;transition:.3s
-}
-input:focus,textarea:focus,select:focus{
-outline:none;box-shadow:0 0 10px var(--gold)
+color:#fff;font-size:15px
 }
 .submit{
 background:var(--gold);border:none;
 padding:12px;width:100%;
-font-weight:bold;cursor:pointer;
-transition:.3s
+font-weight:bold;cursor:pointer
 }
-.submit:hover{transform:scale(1.05)}
 #success{
 display:none;background:#0a3;
-padding:12px;text-align:center;
-margin-top:10px;border-radius:6px
+padding:12px;text-align:center;margin-top:10px;border-radius:6px
 }
-
-/* ===== CONTACT ===== */
-.contact{text-align:center}
-.social a{
-font-size:30px;margin:0 10px;
-color:var(--gold);transition:.3s
-}
-.social a:hover{transform:scale(1.2) rotate(8deg)}
 
 /* ===== WHATSAPP ===== */
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
 background:#25d366;color:#fff;
 padding:14px;border-radius:50%;
-font-size:26px;opacity:0;
-pointer-events:none;transition:.3s
+font-size:26px;opacity:0;pointer-events:none;transition:.3s
 }
 .whatsapp.show{opacity:1;pointer-events:auto}
 </style>
@@ -147,8 +131,7 @@ pointer-events:none;transition:.3s
 <div class="hero">
 <img src="logo.png">
 <h2 id="heroTitle">قوة • انضباط • ثقة</h2>
-<p id="heroText">خبرة تسعة سنوات</p>
-
+<p id="heroText">تدريب خاص</p>
 <div class="buttons">
 <a href="#register" id="heroBtn">سجل الآن</a>
 <a href="#register" class="secondary" id="visitBtn">احجز زيارة</a>
@@ -156,76 +139,52 @@ pointer-events:none;transition:.3s
 </div>
 
 <section>
-<h3 id="whyTitle">لماذا القناصون؟</h3>
+<h3>لماذا القناصون؟</h3>
 <div class="features">
-<div class="feature" id="f1">تدريب تايكواندو احترافي</div>
-<div class="feature" id="f2">لياقة بدنية عالية</div>
-<div class="feature" id="f3">دفاع عن النفس</div>
-<div class="feature" id="f4">بطولات محلية ودولية</div>
+<div class="feature">تدريب احترافي</div>
+<div class="feature">لياقة عالية</div>
+<div class="feature">دفاع عن النفس</div>
+<div class="feature">بطولات</div>
 </div>
 </section>
 
-<section>
-<h3 id="timeTitle">أوقات التدريب</h3>
-<p id="timeText" style="text-align:center">
-من عمر 3.5 سنوات فما فوق<br>
-من 1 مساءً إلى 9 مساءً<br>
-الجمعة عطلة
-</p>
-</section>
-
 <section id="register">
-<h3 id="regTitle">التسجيل</h3>
-
+<h3>التسجيل</h3>
 <form id="form">
-<input id="nameInput" placeholder="الاسم الكامل" required>
-<input id="emailInput" type="email" placeholder="البريد الإلكتروني (اختياري)">
-<input id="phoneInput" placeholder="رقم الهاتف" required>
-<textarea id="messageInput" placeholder="ملاحظات"></textarea>
-
-<button class="submit" id="sendBtn">إرسال</button>
-<div id="success">تم استلام طلبك، سنقوم بالتواصل معك قريبًا</div>
+<input placeholder="الاسم الكامل" required>
+<input placeholder="رقم الهاتف" required>
+<button class="submit">إرسال</button>
+<div id="success">تم الاستلام</div>
 </form>
-
-<p id="footerText" style="text-align:center;font-weight:bold">
-بإدارة الكابتن أحمد الأسمر
-</p>
 </section>
+
+<a class="whatsapp" id="whatsappBtn" href="https://wa.me/962798121015" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
-/* ===== FIX ===== */
-let ar = true;
-
-/* ===== LOADER ===== */
 window.onload=()=>{
 setTimeout(()=>{
-document.getElementById("loader").style.opacity="0";
-setTimeout(()=>document.getElementById("loader").remove(),600);
+const l=document.getElementById("loader");
+l.style.opacity="0";
+setTimeout(()=>l.remove(),600);
 },1800);
 };
 
-/* ===== HERO TEXT ROTATION ===== */
-const heroText=document.getElementById("heroText");
-const heroTextsAR=["تدريب خاص","نصنع من طفلك بطل","سجل الآن!"];
-const heroTextsEN=["Private Training","We Make Your Child a Champion","Register Now!"];
-let heroIndex=0;
+const sections=document.querySelectorAll("section");
+const whatsapp=document.getElementById("whatsappBtn");
 
-setInterval(()=>{
-heroText.style.opacity="0";
-setTimeout(()=>{
-heroText.innerText=ar?heroTextsAR[heroIndex%3]:heroTextsEN[heroIndex%3];
-heroText.style.opacity="1";
-heroIndex++;
-},500);
-},2500);
+window.addEventListener("scroll",()=>{
+sections.forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-120){
+s.classList.add("show");
+}
+});
+whatsapp.classList.toggle("show",window.scrollY>300);
+});
 
-/* ===== LANGUAGE ===== */
-const langBtn=document.getElementById("langBtn");
-langBtn.onclick=()=>{
-ar=!ar;
-document.documentElement.dir=ar?"rtl":"ltr";
-langBtn.innerText=ar?"EN":"AR";
-};
+/* FIX MOBILE */
+window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
