@@ -261,7 +261,10 @@ const success = document.getElementById("success");
 
 form.addEventListener("submit", function(e){
   e.preventDefault();
-
+gtag('event', 'registration_submit', {
+  event_category: 'form',
+  event_label: 'register_form'
+});
   const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
   const email = emailInput.value.trim();
